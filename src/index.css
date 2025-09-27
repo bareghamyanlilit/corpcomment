@@ -1,6 +1,9 @@
 /* / */
 /* / */
 /* / */
+* {
+  font-family: math;
+}
 *,
 *::after,
 *::before {
@@ -49,6 +52,10 @@ button {
   color: rgba(255, 255, 255, 0.8);
 }
 
+.container {
+  width: 800px;
+}
+
 @keyframes intro {
   0% {
     transform: scale(0.8);
@@ -70,7 +77,7 @@ button {
 }
 
 body {
-  background-image: linear-gradient(200deg #654a86, #534292);
+  background: #654a86;
   min-height: 100vh;
   font-family: "Inter", sans-serif;
   display: flex;
@@ -90,21 +97,27 @@ body {
   justify-content: center;
   height: 850px;
 }
+.form {
+  width: 600px;
+  background: #3f3f3f8f;
+  padding: 10px;
+  border-radius: 20px;
+}
 .form:hover,
-.form:focus{
-    background-color: rgba(255, 255, 255, 0.055);
+.form:focus {
+  background-color: rgba(255, 255, 255, 0.055);
 }
 
-.form:focus-within{
-    outline: 2px solid rgba(255, 255, 255, 0.125);
+.form:focus-within {
+  outline: 2px solid rgba(255, 255, 255, 0.125);
 }
 
-.form--invalid{
-    box-shadow: 0 0 0 2px #8a3d2c;
+.form--invalid {
+  box-shadow: 0 0 0 2px #8a3d2c;
 }
 
-.form--valid{
-    box-shadow: 0 0 0 2px #2c8a5e;
+.form--valid {
+  box-shadow: 0 0 0 2px #2c8a5e;
 }
 
 textarea {
@@ -154,19 +167,20 @@ form div:last-child p > *::selection {
   background-color: rgba(255, 255, 255, 0.05);
 }
 
-header{
-    height: 277px;
-    background-color: #121618;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    z-index: 999;
-    backface-visibility: hidden;
-    transform: translateZ(0);
-    box-shadow: rgba(12,17,21,0.5) 0px 0px 50px;
-    padding-bottom: 3px;
+header {
+  border-radius: 20px 20px 0 0;
+  height: 277px;
+  background-color: #121618;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 999;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  box-shadow: rgba(12, 17, 21, 0.5) 0px 0px 50px;
+  padding-bottom: 3px;
 }
 
 .pattern {
@@ -210,12 +224,17 @@ h1 *::selection {
 
 form button {
   color: #161921;
+  background: white;
   font-size: 12px;
   font-weight: 500;
   text-transform: uppercase;
   padding: 4px 16px 9px;
   border-radius: 500px;
 }
+/* form label {
+  color: #5f6061;
+  top: -10px;
+} */
 
 form button:hover,
 form button:focus {
@@ -230,6 +249,34 @@ form button:hover span {
   transform: translateY(2px) translateZ(0);
 }
 
+.feedback {
+  display: flex;
+  padding: 20px;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid gray;
+}
+.feedback:hover{
+  background: rgb(228, 228, 228);
+}
+.feedback button {
+  display: flex;
+  border: none;
+  flex-direction: column;
+  align-items: center;
+}
+
+.feedback button:hover{
+  background: rgb(240, 240, 240);
+}
+
+.feedback .text{
+  width: 550px;
+}
+
+.feedback .text .name{
+  color: #6c6d76;
+}
 .feedback--expand {
   height: 100px;
   background-color: #fff;
@@ -250,6 +297,7 @@ form button:hover span {
   width: 49px;
   border-radius: 6px;
   background-color: #564989;
+  color: white;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -279,6 +327,12 @@ form button:hover span {
   color: #6c6d76;
   font-size: 11px;
   margin-top: -1px;
+}
+
+.feedback-list {
+  min-height: 550px;
+  border-radius: 0 0 20px 20px;
+  background: white;
 }
 
 .hashtags {
@@ -321,7 +375,7 @@ form button:hover span {
 
 .footer > small {
   color: #a6adb5;
-  font-size: 11px;
+  font-size: 14px;
 }
 
 .footer > small *::selection {
@@ -335,7 +389,6 @@ form button:hover span {
 .footer > small > p > a {
   text-decoration: underline;
 }
-
 .spinner {
   position: absolute;
   left: 50%;
