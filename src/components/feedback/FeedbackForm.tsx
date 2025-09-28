@@ -7,6 +7,8 @@ type FeedbackFormProps = {
 
 export default function FeedbackForm({ onAddToList }: FeedbackFormProps) {
   const [text, setText] = useState("");
+  const [showValidIndicator, setShowValidIndicator] = useState(false);
+  const [showInvalidIndicator, setShowInvalidIndicator] = useState(false);
   const charCount = MAX_CHARACTERS - text.length;
 
   const handleChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -17,13 +19,31 @@ export default function FeedbackForm({ onAddToList }: FeedbackFormProps) {
     setText(newText);
   };
 
-  const handleSubmit = (event:React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    onAddToList(text)
-    setText('')
+
+    //basic validation
+
+    if (text.includes("#") && text.length >= 5) {
+      setShowValidIndicator(true);
+      setTimeout(() => setShowValidIndicator(false), 2000);
+    } else {
+      setShowInvalidIndicator(true);
+      setTimeout(() => setShowInvalidIndicator(false), 2000);
+      return;
+    }
+
+    onAddToList(text);
+    setText("");
   };
+
   return (
-    <form onSubmit={handleSubmit} className="form">
+    <form
+      onSubmit={handleSubmit}
+      className={`form ${showValidIndicator ? "form--valid" : ""} ${
+        showInvalidIndicator ? "form--invalid" : ""
+      }`}
+    >
       <textarea
         value={text}
         onChange={handleChange}
@@ -32,9 +52,9 @@ export default function FeedbackForm({ onAddToList }: FeedbackFormProps) {
         spellCheck={false}
       />
 
-      {/* <label htmlFor="feedback-textarea">
+      <label htmlFor="feedback-textarea">
         Enter your feedback here,remember to #hashtag the company
-      </label> */}
+      </label>
       <div>
         <p className="u-italic">{charCount}</p>
         <button>
